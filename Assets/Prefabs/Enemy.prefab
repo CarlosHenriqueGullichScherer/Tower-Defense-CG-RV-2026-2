@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 668645368366953858}
   - component: {fileID: 5622036944211193547}
   - component: {fileID: 7506709769332219041}
-  - component: {fileID: 2149765862142243980}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -121,19 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80906ac89719f4a40808cc506691e657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  speed: 2
---- !u!114 &2149765862142243980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3191591365819600172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a4fb165e1b035443b243ac3d5be4d3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  speed: 4
 --- !u!1 &3784793547666627328
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +200,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

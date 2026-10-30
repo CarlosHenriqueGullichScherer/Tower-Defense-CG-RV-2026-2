@@ -14,10 +14,10 @@ public class BaseHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy")) 
         {
-            EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+            Enemy enemyHealth = other.gameObject.GetComponent<Enemy>();
             takeDamage(enemyHealth.health);
             Destroy(other.gameObject);
-            Debug.Log(health);
+            Debug.Log("vida da base:" + health);
         } 
     }
 }

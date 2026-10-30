@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 2f;
+    public float health { get; set; } = 10f;
 
     private Transform[] waypoints;
     private int currentWaypoint = 0;
@@ -27,14 +28,14 @@ public class Enemy : MonoBehaviour
 
             if (currentWaypoint >= waypoints.Length)
             {
-                ReachBase();
+                Destroy(gameObject);
             }
         }
     }
-    private void ReachBase()
+ 
+    public void TakeDamage(float damage)
     {
-        Destroy(gameObject);
-
-        Debug.Log("Enemy reached the base");
+        health -= damage;
+        if (health <= 0f) Destroy(gameObject);
     }
 }
