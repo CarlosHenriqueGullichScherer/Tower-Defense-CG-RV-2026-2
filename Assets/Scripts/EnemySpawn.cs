@@ -1,29 +1,25 @@
-using System.Collections;
+
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject enemyPrefab2;
     public Transform[] waypoints;
-    public float spawnInterval = 3f;
 
-    void Start()
+    public Enemy SpawnEnemy()
     {
-        StartCoroutine(SpawnEnemy());
+        GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        Enemy enemyScript = enemy.GetComponent<Enemy>();
+        enemyScript.SetWayPoints(waypoints);
+        return enemyScript;
     }
 
-    IEnumerator SpawnEnemy()
+    public Enemy spawnEnemy2()
     {
-        while (true)
-        {
-            GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity
-            );
-
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
-
-            enemyScript.SetWayPoints(waypoints);
-
-            yield return new WaitForSeconds(spawnInterval);
-        }
+        GameObject enemy = Instantiate(enemyPrefab2, transform.position, Quaternion.identity);
+        Enemy enemyScript = enemy.GetComponent<Enemy>();
+        enemyScript.SetWayPoints(waypoints);
+        return enemyScript;
     }
 }

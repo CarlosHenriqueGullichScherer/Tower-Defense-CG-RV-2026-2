@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BaseHealth : MonoBehaviour
 {
-    public float health { get; set; } = 100f;
+    [SerializeField] private float health = 100f;
     public void takeDamage(float damage)
     {
         health -= damage;
@@ -15,7 +15,7 @@ public class BaseHealth : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy")) 
         {
             Enemy enemyHealth = other.gameObject.GetComponent<Enemy>();
-            takeDamage(enemyHealth.health);
+            takeDamage(enemyHealth.Health);
             Destroy(other.gameObject);
             Debug.Log("vida da base:" + health);
         } 

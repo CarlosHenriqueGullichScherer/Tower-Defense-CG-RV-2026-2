@@ -10,9 +10,9 @@ Projeto de um jogo **Tower Defense 2D**, desenvolvido para a disciplina de Compu
 
 ## 2. Estruturas defensivas
 
-- [ ] Implementar no mínimo duas estruturas defensivas distintas.
+- [x] Implementar no mínimo duas estruturas defensivas distintas.
 - [x] **Estrutura 1:** característica 1.
-- [ ] **Estrutura 2:** característica 2.
+- [x] **Estrutura 2:** característica 2.
 
 ## 3. Níveis de dificuldade
 
@@ -54,7 +54,7 @@ O jogo deverá possuir um menu de opções que permita:
 
 ### 6.3. Variedade
 
-- [ ] É recomendado que os inimigos representem pelo menos dois comportamentos ou características distintas.
+- [x] É recomendado que os inimigos representem pelo menos dois comportamentos ou características distintas.
 - [ ] A quantidade e a variação de inimigos devem depender do nível de dificuldade escolhido.
 
 ## 7. Ataques e projéteis

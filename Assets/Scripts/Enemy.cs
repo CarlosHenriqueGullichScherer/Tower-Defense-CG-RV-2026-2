@@ -1,10 +1,13 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed = 2f;
-    public float health { get; set; } = 10f;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float health = 10f;
+
+    public float Health {
+        get { return health; }
+    }
 
     private Transform[] waypoints;
     private int currentWaypoint = 0;
