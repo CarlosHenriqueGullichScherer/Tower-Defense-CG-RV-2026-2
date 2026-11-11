@@ -16,16 +16,16 @@ Projeto de um jogo **Tower Defense 2D**, desenvolvido para a disciplina de Compu
 
 ## 3. Níveis de dificuldade
 
-- [ ] Implementar no mínimo dois níveis de dificuldade.
-- [ ] No nível mais simples, pelo menos 5 inimigos deverão ser eliminados.
+- [x] Implementar no mínimo dois níveis de dificuldade.
+- [x] No nível mais simples, pelo menos 5 inimigos deverão ser eliminados.
 - [ ] A quantidade e a variação de inimigos devem depender do nível de dificuldade escolhido.
 
 ## 4. Menu principal e opções
 
 O jogo deverá possuir um menu de opções que permita:
 
-- [ ] Escolher o nível de dificuldade.
-- [ ] Iniciar o jogo.
+- [x] Escolher o nível de dificuldade.
+- [x] Iniciar o jogo.
 - [ ] Visualizar um ranking simples.
 - [ ] Consultar informações sobre o jogo.
 
