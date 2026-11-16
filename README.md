@@ -26,8 +26,8 @@ O jogo deverá possuir um menu de opções que permita:
 
 - [x] Escolher o nível de dificuldade.
 - [x] Iniciar o jogo.
-- [ ] Visualizar um ranking simples.
-- [ ] Consultar informações sobre o jogo.
+- [x] Visualizar um ranking simples.
+- [x] Consultar informações sobre o jogo.
 
 ## 5. Área de jogo e cenário
 

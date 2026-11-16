@@ -11,6 +11,9 @@ public class BuildManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameSession.Instance != null && GameSession.Instance.Finished)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
 {
     Debug.Log("Tecla 1 detectada");

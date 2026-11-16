@@ -4,6 +4,9 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private float health = 10f;
+    [SerializeField] private int points = 10;
+
+    private bool dead;
 
     public float Health {
         get { return health; }
@@ -38,7 +41,14 @@ public class Enemy : MonoBehaviour
  
     public void TakeDamage(float damage)
     {
+        if (dead) return;
+
         health -= damage;
-        if (health <= 0f) Destroy(gameObject);
+        if (health <= 0f)
+        {
+            dead = true;
+            if (GameSession.Instance != null) GameSession.Instance.RegisterKill(points);
+            Destroy(gameObject);
+        }
     }
 }

@@ -29,12 +29,15 @@ public class WaveManager : MonoBehaviour
     private int currentWave = 0;
 
     public Difficulty CurrentDifficulty { get; private set; }
+    public int WaveCount => waves != null ? waves.Length : 0;
+    public int CurrentWaveNumber => Mathf.Min(currentWave + 1, WaveCount);
 
     private void Start()
     {
         CurrentDifficulty = overrideDifficulty ? testDifficulty : GameSettings.Difficulty;
         waves = GetWaves(CurrentDifficulty);
         Debug.Log("Dificuldade: " + CurrentDifficulty + " | inimigos: " + TotalEnemies());
+        GameSession.Create(this, CurrentDifficulty);
         StartCoroutine(PlayWaves());
     }
 
@@ -74,6 +77,9 @@ public class WaveManager : MonoBehaviour
             }
             currentWave++;
         }
+
+        if (GameSession.Instance != null)
+            GameSession.Instance.OnAllWavesCleared();
     }
 
     private IEnumerator SpawnWave(Wave wave)

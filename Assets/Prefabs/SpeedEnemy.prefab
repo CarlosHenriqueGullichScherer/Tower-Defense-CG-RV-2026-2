@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 6
   health: 5
+  points: 15
 --- !u!50 &1787849530184093250
 Rigidbody2D:
   serializedVersion: 5
