@@ -141,6 +141,7 @@ MonoBehaviour:
   speed: 6
   health: 5
   points: 15
+  gold: 8
 --- !u!50 &1787849530184093250
 Rigidbody2D:
   serializedVersion: 5

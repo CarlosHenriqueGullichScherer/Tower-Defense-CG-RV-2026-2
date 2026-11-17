@@ -24,6 +24,13 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float easyTimeLimit = 120f;
     [SerializeField] private float hardTimeLimit = 160f;
 
+    [SerializeField] private int easyStartingGold = 80;
+    [SerializeField] private int hardStartingGold = 100;
+    [SerializeField] private float easyRewardMultiplier = 1f;
+    [SerializeField] private float hardRewardMultiplier = 0.6f;
+    [SerializeField] private int easyWaveBonus = 20;
+    [SerializeField] private int hardWaveBonus = 15;
+
     [SerializeField] private bool overrideDifficulty;
     [SerializeField] private Difficulty testDifficulty = Difficulty.Easy;
 
@@ -34,7 +41,12 @@ public class WaveManager : MonoBehaviour
     public Difficulty CurrentDifficulty { get; private set; }
     public int WaveCount => waves != null ? waves.Length : 0;
     public int CurrentWaveNumber => Mathf.Min(currentWave + 1, WaveCount);
-    public float TimeLimit => CurrentDifficulty == Difficulty.Hard ? hardTimeLimit : easyTimeLimit;
+    public float TimeLimit => IsHard ? hardTimeLimit : easyTimeLimit;
+    public int StartingGold => IsHard ? hardStartingGold : easyStartingGold;
+    public float RewardMultiplier => IsHard ? hardRewardMultiplier : easyRewardMultiplier;
+    public int WaveBonus => IsHard ? hardWaveBonus : easyWaveBonus;
+
+    private bool IsHard => CurrentDifficulty == Difficulty.Hard;
 
     private void Start()
     {
@@ -80,6 +92,12 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
             currentWave++;
+
+            if (currentWave < waves.Length && GameSession.Instance != null)
+            {
+                GameSession.Instance.AddGold(WaveBonus);
+                GameSession.Instance.ShowMessage("Wave cleared! +" + WaveBonus + " gold", true);
+            }
         }
 
         if (GameSession.Instance != null)

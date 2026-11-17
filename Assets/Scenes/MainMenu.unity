@@ -5193,7 +5193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=#FFE500><b>Objective</b></color>\nEnemies come out of the spawn point and follow the path to your base. Build towers to stop them before they get there. Each enemy that reaches the base takes away health; if it drops to zero, the game is over. Clear every wave before the time runs out to win (Easy: 2 min, Hard: 2 min 40 s).\n\n<color=#FFE500><b>Controls</b></color>\n<b>1</b> - Ranger: long range, slow and heavy shots      <b>2</b> - Ninja: short range, fast shots\n<b>Left click</b> - place the tower (green = valid spot, red = invalid)      <b>Right click</b> - cancel\n\n<color=#FFE500><b>Score</b></color>\nNormal enemy: 10 points      Fast enemy: 15 points      Victory: + remaining base health + remaining seconds\nEasy and Hard have separate rankings.\n\n<size=80%><alpha=#AA>Computação Gráfica e Realidade Virtual (CCC300) - UPF 2026/2\nTeam: Carlos, Frederico and Lucian</size>"
+  m_text: "<color=#FFE500><b>Objective</b></color>\nEnemies come out of the spawn point and follow the path to your base. Build towers to stop them before they get there. Each enemy that reaches the base takes away health; if it drops to zero, the game is over. Clear every wave before the time runs out to win (Easy: 2 min, Hard: 2 min 40 s).\n\n<color=#FFE500><b>Controls</b></color>\n<b>1</b> - Ranger (60 gold): long range, slow and heavy shots      <b>2</b> - Ninja (40 gold): short range, fast shots\n<b>Left click</b> - place the tower (green = valid spot, red = invalid)      <b>Right click</b> - cancel\n\n<color=#FFE500><b>Score</b></color>\nNormal enemy: 10 points      Fast enemy: 15 points      Victory: + remaining base health + remaining seconds\nTowers cost gold. You start with some gold and earn more for each enemy killed and each wave cleared (Hard pays less).\nEasy and Hard have separate rankings.\n\n<size=80%><alpha=#AA>Computação Gráfica e Realidade Virtual (CCC300) - UPF 2026/2\nTeam: Carlos, Frederico and Lucian</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5220,8 +5220,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

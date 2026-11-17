@@ -5,8 +5,11 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private BuildPreview previewPrefab;
     [SerializeField] private GameObject[] towerPrefabs;
+    [SerializeField] private int[] towerCosts = { 60, 40 };
+    [SerializeField] private string[] towerNames = { "Ranger", "Ninja" };
 
     private GameObject selectedTowerPrefab;
+    private int selectedCost;
     private BuildPreview currentPreview;
 
     private void Update()
@@ -45,7 +48,16 @@ public class BuildManager : MonoBehaviour
 
     CancelBuild();
 
+    int cost = CostOf(index);
+    GameSession session = GameSession.Instance;
+    if (session != null && !session.CanAfford(cost))
+    {
+        session.ShowMessage("Not enough gold for " + NameOf(index) + " (" + cost + ")");
+        return;
+    }
+
     selectedTowerPrefab = towerPrefabs[index];
+    selectedCost = cost;
     currentPreview = Instantiate(previewPrefab);
 
     Debug.Log("Prévia criada: " + currentPreview.name);
@@ -53,6 +65,14 @@ public class BuildManager : MonoBehaviour
 
     private void BuildTower()
     {
+        GameSession session = GameSession.Instance;
+        if (session != null && !session.TrySpend(selectedCost))
+        {
+            session.ShowMessage("Not enough gold");
+            CancelBuild();
+            return;
+        }
+
         Instantiate(selectedTowerPrefab, currentPreview.transform.position, Quaternion.identity);
         CancelBuild();
     }
@@ -64,5 +84,30 @@ public class BuildManager : MonoBehaviour
 
         currentPreview = null;
         selectedTowerPrefab = null;
+        selectedCost = 0;
+    }
+
+    public string ShopText(int gold)
+    {
+        string text = "";
+
+        for (int i = 0; i < towerPrefabs.Length; i++)
+        {
+            int cost = CostOf(i);
+            string entry = "[" + (i + 1) + "] " + NameOf(i) + " - " + cost + "g";
+            text += (gold >= cost ? entry : "<color=#888888>" + entry + "</color>") + "      ";
+        }
+
+        return text.TrimEnd();
+    }
+
+    private int CostOf(int index)
+    {
+        return towerCosts != null && index < towerCosts.Length ? towerCosts[index] : 0;
+    }
+
+    private string NameOf(int index)
+    {
+        return towerNames != null && index < towerNames.Length ? towerNames[index] : "Tower " + (index + 1);
     }
 }

@@ -20,6 +20,9 @@ public class GameSession : MonoBehaviour
 
     private int score;
     private int kills;
+    private int gold;
+    private float rewardMultiplier = 1f;
+    private float messageUntil;
     private float elapsed;
     private float timeLimit;
     private bool finished;
@@ -27,6 +30,9 @@ public class GameSession : MonoBehaviour
     private bool saved;
 
     private TMP_Text hudText;
+    private TMP_Text shopText;
+    private TMP_Text messageText;
+    private BuildManager buildManager;
     private GameObject endPanel;
     private TMP_Text endTitle;
     private TMP_Text endDetails;
@@ -35,6 +41,7 @@ public class GameSession : MonoBehaviour
 
     public bool Finished => finished;
     public int Score => score;
+    public int Gold => gold;
 
     public static GameSession Create(WaveManager waveManager, Difficulty difficulty)
     {
@@ -59,7 +66,15 @@ public class GameSession : MonoBehaviour
     private void Start()
     {
         baseHealth = FindFirstObjectByType<BaseHealth>();
-        timeLimit = waveManager != null ? waveManager.TimeLimit : 0f;
+        buildManager = FindFirstObjectByType<BuildManager>();
+
+        if (waveManager != null)
+        {
+            timeLimit = waveManager.TimeLimit;
+            gold = waveManager.StartingGold;
+            rewardMultiplier = waveManager.RewardMultiplier;
+        }
+
         BuildUI();
         UpdateHud();
     }
@@ -78,16 +93,53 @@ public class GameSession : MonoBehaviour
             return;
         }
 
+        if (messageText != null && messageText.gameObject.activeSelf && Time.time >= messageUntil)
+            messageText.gameObject.SetActive(false);
+
         UpdateHud();
     }
 
-    public void RegisterKill(int points)
+    public void RegisterKill(int points, int goldReward)
     {
         if (finished)
             return;
 
         kills++;
         score += points;
+        AddGold(Mathf.RoundToInt(goldReward * rewardMultiplier));
+    }
+
+    public void AddGold(int amount)
+    {
+        if (finished || amount <= 0)
+            return;
+
+        gold += amount;
+    }
+
+    public bool CanAfford(int cost)
+    {
+        return gold >= cost;
+    }
+
+    public bool TrySpend(int cost)
+    {
+        if (finished || gold < cost)
+            return false;
+
+        gold -= cost;
+        return true;
+    }
+
+    public void ShowMessage(string message, bool positive = false)
+    {
+        if (messageText == null)
+            return;
+
+        messageText.text = message;
+        messageText.color = positive ? new Color(0.5f, 1f, 0.4f) : new Color(1f, 0.35f, 0.35f);
+        messageText.gameObject.SetActive(true);
+        messageUntil = Time.time + 1.5f;
     }
 
     public void OnBaseDestroyed()
@@ -119,7 +171,6 @@ public class GameSession : MonoBehaviour
         score += healthBonus + timeBonus;
         Time.timeScale = 0f;
 
-        BuildManager buildManager = FindFirstObjectByType<BuildManager>();
         if (buildManager != null)
             buildManager.CancelBuild();
 
@@ -199,10 +250,14 @@ public class GameSession : MonoBehaviour
 
         hudText.text =
             "Base: " + health +
+            "\n<color=#FFD24D>Gold: " + gold + "</color>" +
             "\nWave: " + wave +
             "\nScore: " + score +
             "\nKills: " + kills +
             "\n" + TimeLabel();
+
+        if (shopText != null && buildManager != null)
+            shopText.text = buildManager.ShopText(gold);
     }
 
     private string TimeLabel()
@@ -241,7 +296,18 @@ public class GameSession : MonoBehaviour
         hudText.outlineWidth = 0.2f;
         hudText.outlineColor = Color.black;
         hudText.rectTransform.pivot = new Vector2(0f, 1f);
-        Place(hudText.rectTransform, new Vector2(0f, 1f), new Vector2(30f, -20f), new Vector2(500f, 220f));
+        Place(hudText.rectTransform, new Vector2(0f, 1f), new Vector2(30f, -20f), new Vector2(500f, 300f));
+
+        shopText = CreateText(root, "Shop", 34, TextAlignmentOptions.Bottom);
+        shopText.outlineWidth = 0.2f;
+        shopText.outlineColor = Color.black;
+        Place(shopText.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 50f), new Vector2(1400f, 60f));
+
+        messageText = CreateText(root, "Message", 44, TextAlignmentOptions.Center);
+        messageText.outlineWidth = 0.25f;
+        messageText.outlineColor = Color.black;
+        Place(messageText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -80f), new Vector2(1200f, 80f));
+        messageText.gameObject.SetActive(false);
 
         endPanel = new GameObject("EndPanel", typeof(RectTransform), typeof(Image));
         endPanel.transform.SetParent(root, false);
