@@ -83,7 +83,7 @@ Implementar os seguintes tipos de colisão:
 
 Requisito temporal:
 
-- [ ] Implementar um tempo máximo para a partida.
+- [x] Implementar um tempo máximo para a partida.
 
 ## 10. Entregáveis
 

@@ -21,6 +21,7 @@ public class GameSession : MonoBehaviour
     private int score;
     private int kills;
     private float elapsed;
+    private float timeLimit;
     private bool finished;
     private bool victory;
     private bool saved;
@@ -58,6 +59,7 @@ public class GameSession : MonoBehaviour
     private void Start()
     {
         baseHealth = FindFirstObjectByType<BaseHealth>();
+        timeLimit = waveManager != null ? waveManager.TimeLimit : 0f;
         BuildUI();
         UpdateHud();
     }
@@ -68,6 +70,14 @@ public class GameSession : MonoBehaviour
             return;
 
         elapsed += Time.deltaTime;
+
+        if (timeLimit > 0f && elapsed >= timeLimit)
+        {
+            elapsed = timeLimit;
+            Finish(false, "TIME'S UP");
+            return;
+        }
+
         UpdateHud();
     }
 
@@ -82,15 +92,15 @@ public class GameSession : MonoBehaviour
 
     public void OnBaseDestroyed()
     {
-        Finish(false);
+        Finish(false, "GAME OVER");
     }
 
     public void OnAllWavesCleared()
     {
-        Finish(true);
+        Finish(true, "VICTORY!");
     }
 
-    private void Finish(bool won)
+    private void Finish(bool won, string title)
     {
         if (finished)
             return;
@@ -102,7 +112,11 @@ public class GameSession : MonoBehaviour
         if (won && baseHealth != null)
             healthBonus = Mathf.CeilToInt(baseHealth.Health);
 
-        score += healthBonus;
+        int timeBonus = 0;
+        if (won && timeLimit > 0f)
+            timeBonus = Mathf.CeilToInt(timeLimit - elapsed);
+
+        score += healthBonus + timeBonus;
         Time.timeScale = 0f;
 
         BuildManager buildManager = FindFirstObjectByType<BuildManager>();
@@ -111,12 +125,12 @@ public class GameSession : MonoBehaviour
 
         UpdateHud();
 
-        endTitle.text = won ? "VICTORY!" : "GAME OVER";
+        endTitle.text = title;
         endTitle.color = won ? new Color(1f, 0.9f, 0f) : new Color(1f, 0.3f, 0.3f);
         endDetails.text =
             "Difficulty: " + difficulty +
             "\nKills: " + kills + "   Time: " + FormatTime(elapsed) +
-            (won ? "\nBase health bonus: +" + healthBonus : "") +
+            (won ? "\nBase health bonus: +" + healthBonus + "   Time bonus: +" + timeBonus : "") +
             "\n<size=130%><b>Score: " + score + "</b></size>";
 
         endPanel.SetActive(true);
@@ -188,7 +202,17 @@ public class GameSession : MonoBehaviour
             "\nWave: " + wave +
             "\nScore: " + score +
             "\nKills: " + kills +
-            "\nTime: " + FormatTime(elapsed);
+            "\n" + TimeLabel();
+    }
+
+    private string TimeLabel()
+    {
+        if (timeLimit <= 0f)
+            return "Time: " + FormatTime(elapsed);
+
+        float remaining = Mathf.Max(timeLimit - elapsed, 0f);
+        string label = "Time left: " + FormatTime(Mathf.Ceil(remaining));
+        return remaining <= 20f ? "<color=#FF4D4D>" + label + "</color>" : label;
     }
 
     private static string FormatTime(float seconds)

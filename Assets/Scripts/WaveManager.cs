@@ -21,6 +21,9 @@ public class WaveManager : MonoBehaviour
         new Wave(10, 10, 1f)
     };
 
+    [SerializeField] private float easyTimeLimit = 120f;
+    [SerializeField] private float hardTimeLimit = 160f;
+
     [SerializeField] private bool overrideDifficulty;
     [SerializeField] private Difficulty testDifficulty = Difficulty.Easy;
 
@@ -31,6 +34,7 @@ public class WaveManager : MonoBehaviour
     public Difficulty CurrentDifficulty { get; private set; }
     public int WaveCount => waves != null ? waves.Length : 0;
     public int CurrentWaveNumber => Mathf.Min(currentWave + 1, WaveCount);
+    public float TimeLimit => CurrentDifficulty == Difficulty.Hard ? hardTimeLimit : easyTimeLimit;
 
     private void Start()
     {
