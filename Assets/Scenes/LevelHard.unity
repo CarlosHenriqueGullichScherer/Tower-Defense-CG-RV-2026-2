@@ -857,6 +857,14 @@ MonoBehaviour:
   - enemyCount: 10
     enemy2Count: 10
     spawnInterval: 1
+  easyTimeLimit: 120
+  hardTimeLimit: 160
+  easyStartingGold: 80
+  hardStartingGold: 100
+  easyRewardMultiplier: 1
+  hardRewardMultiplier: 0.6
+  easyWaveBonus: 20
+  hardWaveBonus: 15
   overrideDifficulty: 0
   testDifficulty: 0
 --- !u!4 &584873992
@@ -1130,6 +1138,10 @@ MonoBehaviour:
   towerPrefabs:
   - {fileID: 1994780201356185787, guid: cc379e403f0764c19bd4c0518f599d39, type: 3}
   - {fileID: 6584593484555554455, guid: 172f323d4c6073a49823108f1d33dd18, type: 3}
+  towerCosts: 3c00000028000000
+  towerNames:
+  - Ranger
+  - Ninja
 --- !u!4 &827626075
 Transform:
   m_ObjectHideFlags: 0
