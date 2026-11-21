@@ -121,3 +121,4 @@ MonoBehaviour:
   - {fileID: -5575425153787493513, guid: 3342be8000129e444a04195a2e39b0f4, type: 3}
   - {fileID: -7547314956129644981, guid: f8851f39029a0cc43bfc57f5d2943dce, type: 3}
   impactFrameDuration: 0.08
+  impactSound: {fileID: 8300000, guid: fee1bb8a0ad2c4f4b957413267eec148, type: 3}

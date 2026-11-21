@@ -77,6 +77,9 @@ public class GameSession : MonoBehaviour
 
         BuildUI();
         UpdateHud();
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayBackgroundMusic();
     }
 
     private void Update()
@@ -159,6 +162,14 @@ public class GameSession : MonoBehaviour
 
         finished = true;
         victory = won;
+
+        if (AudioManager.Instance != null)
+        {
+            if (won)
+                AudioManager.Instance.PlayVictory();
+            else
+                AudioManager.Instance.PlayDefeat();
+        }
 
         int healthBonus = 0;
         if (won && baseHealth != null)

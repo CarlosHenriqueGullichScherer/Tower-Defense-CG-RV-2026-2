@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Sprite[] damageSprites = new Sprite[8];
     [SerializeField] private Sprite[] deathSprites = new Sprite[24];
     [SerializeField] private float frameDuration = 0.1f;
+    [SerializeField] private AudioClip[] hurtSounds;
+    [SerializeField] private AudioClip deathSound;
 
     private SpriteRenderer spriteRenderer;
 
@@ -132,6 +134,8 @@ public class Enemy : MonoBehaviour
         if (damageCoroutine != null)
             StopCoroutine(damageCoroutine);
 
+        PlayHurtSound();
+
         damageCoroutine = StartCoroutine(PlayDamageAnimation());
     }
 
@@ -158,6 +162,8 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator PlayDeathAnimation()
     {
+        AudioManager.Instance.PlaySFX(deathSound);
+
         for (int i = 0; i < 6; i++)
         {
             int index = currentDirection * 6 + i;
@@ -179,5 +185,13 @@ public class Enemy : MonoBehaviour
             StopCoroutine(damageCoroutine);
 
         StartCoroutine(PlayDeathAnimation());
+    }
+    private void PlayHurtSound()
+    {
+        if (hurtSounds.Length == 0) return;
+
+        int randomIndex = Random.Range(0, hurtSounds.Length);
+
+        AudioManager.Instance.PlaySFX(hurtSounds[randomIndex]);
     }
 }

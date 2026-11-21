@@ -53,6 +53,7 @@ MonoBehaviour:
   firePoint: {fileID: 2249285488654504793}
   turretAim: {fileID: 4724088848902782260}
   turretAnimation: {fileID: 1882727588684017422}
+  shootSound: {fileID: 8300000, guid: 2579ed0cbc27d4640af2d9e8d4d51452, type: 3}
 --- !u!61 &978059472966692318
 BoxCollider2D:
   m_ObjectHideFlags: 0

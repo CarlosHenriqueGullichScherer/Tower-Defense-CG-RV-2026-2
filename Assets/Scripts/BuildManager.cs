@@ -7,6 +7,7 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private GameObject[] towerPrefabs;
     [SerializeField] private int[] towerCosts = { 60, 40 };
     [SerializeField] private string[] towerNames = { "Ranger", "Ninja" };
+    [SerializeField] private AudioClip buildSound;
 
     private GameObject selectedTowerPrefab;
     private int selectedCost;
@@ -74,6 +75,7 @@ public class BuildManager : MonoBehaviour
         }
 
         Instantiate(selectedTowerPrefab, currentPreview.transform.position, Quaternion.identity);
+        AudioManager.Instance.PlaySFX(buildSound);
         CancelBuild();
     }
 

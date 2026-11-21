@@ -111,6 +111,11 @@ MonoBehaviour:
   - {fileID: -1404142784854315670, guid: 53e653aa6db69344bae937053655b3a0, type: 3}
   - {fileID: -2274988890472037438, guid: 28417afec6fd13d44b15ef07403ea9b9, type: 3}
   frameDuration: 0.1
+  hurtSounds:
+  - {fileID: 8300000, guid: d1d35f4e9c3ab2648aa029c5d8c43762, type: 3}
+  - {fileID: 8300000, guid: a055d5316960616469a1653c510a9ccd, type: 3}
+  - {fileID: 8300000, guid: 80bc3ba906726694b9ae04bba934559d, type: 3}
+  deathSound: {fileID: 8300000, guid: 7d74442caedbac448810c3d6d613840d, type: 3}
 --- !u!50 &4469714365107485242
 Rigidbody2D:
   serializedVersion: 5

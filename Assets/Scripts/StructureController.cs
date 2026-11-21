@@ -8,6 +8,7 @@ public class StructureController : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private TurretAim turretAim;
     [SerializeField] private TurretAnimation turretAnimation;
+    [SerializeField] private AudioClip shootSound;
 
     private Enemy target;
     private float nextAttackTime;
@@ -53,7 +54,7 @@ public class StructureController : MonoBehaviour
     {
         if (target == null) return;
 
-        turretAnimation.PlayFireAnimation(turretAim.CurrentDirection);
+        AudioManager.Instance.PlaySFX(shootSound);
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 

@@ -3,6 +3,7 @@ using UnityEngine;
 public class BaseHealth : MonoBehaviour
 {
     [SerializeField] private float health = 100f;
+    [SerializeField] private AudioClip damageSound;
 
     private float maxHealth;
 
@@ -19,11 +20,17 @@ public class BaseHealth : MonoBehaviour
         if (health <= 0f) return;
 
         health -= damage;
+
         if (health <= 0f)
         {
-            if (GameSession.Instance != null) GameSession.Instance.OnBaseDestroyed();
+            if (GameSession.Instance != null)
+                GameSession.Instance.OnBaseDestroyed();
+
             Destroy(gameObject);
+            return;
         }
+
+        AudioManager.Instance.PlaySFX(damageSound);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

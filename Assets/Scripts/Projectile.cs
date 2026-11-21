@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private Sprite[] impactSprites = new Sprite[6];
     [SerializeField] private float impactFrameDuration = 0.08f;
+    [SerializeField] private AudioClip impactSound;
     private bool isImpacting;
 
     private Enemy target;
@@ -66,6 +67,7 @@ public class Projectile : MonoBehaviour
         if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
         {
             target.TakeDamage(damage);
+            AudioManager.Instance.PlaySFX(impactSound);
             StartCoroutine(PlayImpactAnimation());
         }
     }

@@ -33,6 +33,7 @@ public class WaveManager : MonoBehaviour
 
     [SerializeField] private bool overrideDifficulty;
     [SerializeField] private Difficulty testDifficulty = Difficulty.Easy;
+    [SerializeField] private AudioClip waveStartSound;
 
     private readonly List<Enemy> aliveEnemies = new List<Enemy>();
     private Wave[] waves;
@@ -106,6 +107,8 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator SpawnWave(Wave wave)
     {
+        AudioManager.Instance.PlaySFX(waveStartSound);
+
         int spawnedEnemy1 = 0;
         int spawnedEnemy2 = 0;
         bool spawnFirst = true;
