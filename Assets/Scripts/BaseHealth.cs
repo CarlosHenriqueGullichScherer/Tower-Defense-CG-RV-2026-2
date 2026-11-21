@@ -28,12 +28,14 @@ public class BaseHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Enemy")) 
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Enemy enemyHealth = other.gameObject.GetComponent<Enemy>();
+
             takeDamage(enemyHealth.Health);
-            Destroy(other.gameObject);
+            enemyHealth.Die();
+
             Debug.Log("vida da base:" + health);
-        } 
+        }
     }
 }

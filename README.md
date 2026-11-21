@@ -18,7 +18,7 @@ Projeto de um jogo **Tower Defense 2D**, desenvolvido para a disciplina de Compu
 
 - [x] Implementar no mínimo dois níveis de dificuldade.
 - [x] No nível mais simples, pelo menos 5 inimigos deverão ser eliminados.
-- [ ] A quantidade e a variação de inimigos devem depender do nível de dificuldade escolhido.
+- [x] A quantidade e a variação de inimigos devem depender do nível de dificuldade escolhido.
 
 ## 4. Menu principal e opções
 
@@ -36,7 +36,7 @@ O jogo deverá possuir um menu de opções que permita:
   - **Observação:** um ponto.
 - [x] Implementar um caminho ou conjunto de caminhos pelos quais os inimigos deverão se deslocar.
   - **Observação:** um caminho.
-- [ ] Implementar posições ou áreas para a colocação das estruturas defensivas.
+- [x] Implementar posições ou áreas para a colocação das estruturas defensivas.
 - [ ] O cenário deve possuir tamanho suficiente para comportar, no mínimo, 30 inimigos enfileirados, considerando os modelos utilizados.
 
 ## 6. Inimigos
@@ -55,7 +55,7 @@ O jogo deverá possuir um menu de opções que permita:
 ### 6.3. Variedade
 
 - [x] É recomendado que os inimigos representem pelo menos dois comportamentos ou características distintas.
-- [ ] A quantidade e a variação de inimigos devem depender do nível de dificuldade escolhido.
+- [x] A quantidade e a variação de inimigos devem depender do nível de dificuldade escolhido.
 
 ## 7. Ataques e projéteis
 

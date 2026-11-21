@@ -6,12 +6,19 @@ public class StructureController : MonoBehaviour
     [SerializeField] private float attackRate = 1f;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private TurretAim turretAim;
+    [SerializeField] private TurretAnimation turretAnimation;
 
     private Enemy target;
     private float nextAttackTime;
 
     void Update()
     {
+        if (target != null)
+        {
+            turretAim.AimAt(target.transform);
+        }
+
         if (target == null || Vector2.Distance(transform.position, target.transform.position) > range)
         {
             FindTarget();
@@ -45,6 +52,8 @@ public class StructureController : MonoBehaviour
     private void Attack()
     {
         if (target == null) return;
+
+        turretAnimation.PlayFireAnimation(turretAim.CurrentDirection);
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
