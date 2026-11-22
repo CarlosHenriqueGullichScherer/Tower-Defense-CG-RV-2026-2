@@ -37,7 +37,7 @@ O jogo deverá possuir um menu de opções que permita:
 - [x] Implementar um caminho ou conjunto de caminhos pelos quais os inimigos deverão se deslocar.
   - **Observação:** um caminho.
 - [x] Implementar posições ou áreas para a colocação das estruturas defensivas.
-- [ ] O cenário deve possuir tamanho suficiente para comportar, no mínimo, 30 inimigos enfileirados, considerando os modelos utilizados.
+- [x] O cenário deve possuir tamanho suficiente para comportar, no mínimo, 30 inimigos enfileirados, considerando os modelos utilizados.
 
 ## 6. Inimigos
 

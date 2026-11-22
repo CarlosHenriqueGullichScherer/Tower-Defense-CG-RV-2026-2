@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036372c459f42ff4b99b854763a5ee71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StructureController
-  range: 100
-  attackRate: 1
+  range: 8
+  attackRate: 1.5
   projectilePrefab: {fileID: 4120900038943797623, guid: beadc69022bc112428702d2b42ea4251, type: 3}
   firePoint: {fileID: 2249285488654504793}
   turretAim: {fileID: 4724088848902782260}

@@ -1,9 +1,10 @@
+
 using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private BuildPreview previewPrefab;
+    [SerializeField] private BuildPreview[] previewPrefabs;
     [SerializeField] private GameObject[] towerPrefabs;
     [SerializeField] private int[] towerCosts = { 60, 40 };
     [SerializeField] private string[] towerNames = { "Ranger", "Ninja" };
@@ -19,10 +20,7 @@ public class BuildManager : MonoBehaviour
             return;
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
-{
-    Debug.Log("Tecla 1 detectada");
-    SelectTower(0);
-}
+            SelectTower(0);
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
             SelectTower(1);
@@ -43,30 +41,34 @@ public class BuildManager : MonoBehaviour
     }
 
     private void SelectTower(int index)
-{
-    if (index < 0 || index >= towerPrefabs.Length)
-        return;
-
-    CancelBuild();
-
-    int cost = CostOf(index);
-    GameSession session = GameSession.Instance;
-    if (session != null && !session.CanAfford(cost))
     {
-        session.ShowMessage("Not enough gold for " + NameOf(index) + " (" + cost + ")");
-        return;
+        if (index < 0 || index >= towerPrefabs.Length ||
+            index >= previewPrefabs.Length)
+            return;
+
+        if (towerPrefabs[index] == null || previewPrefabs[index] == null)
+            return;
+
+        CancelBuild();
+
+        int cost = CostOf(index);
+        GameSession session = GameSession.Instance;
+
+        if (session != null && !session.CanAfford(cost))
+        {
+            session.ShowMessage("Not enough gold for " + NameOf(index) + " (" + cost + ")");
+            return;
+        }
+
+        selectedTowerPrefab = towerPrefabs[index];
+        selectedCost = cost;
+        currentPreview = Instantiate(previewPrefabs[index]);
     }
-
-    selectedTowerPrefab = towerPrefabs[index];
-    selectedCost = cost;
-    currentPreview = Instantiate(previewPrefab);
-
-    Debug.Log("Prévia criada: " + currentPreview.name);
-}
 
     private void BuildTower()
     {
         GameSession session = GameSession.Instance;
+
         if (session != null && !session.TrySpend(selectedCost))
         {
             session.ShowMessage("Not enough gold");
@@ -74,8 +76,9 @@ public class BuildManager : MonoBehaviour
             return;
         }
 
-        Instantiate(selectedTowerPrefab, currentPreview.transform.position, Quaternion.identity);
+        GameObject newTower = Instantiate(selectedTowerPrefab, currentPreview.transform.position, Quaternion.identity);
         AudioManager.Instance.PlaySFX(buildSound);
+        newTower.SetActive(true);
         CancelBuild();
     }
 
@@ -105,11 +108,11 @@ public class BuildManager : MonoBehaviour
 
     private int CostOf(int index)
     {
-        return towerCosts != null && index < towerCosts.Length ? towerCosts[index] : 0;
+        return towerCosts != null && index >= 0 && index < towerCosts.Length ? towerCosts[index] : 0;
     }
 
     private string NameOf(int index)
     {
-        return towerNames != null && index < towerNames.Length ? towerNames[index] : "Tower " + (index + 1);
+        return towerNames != null && index >= 0 && index < towerNames.Length ? towerNames[index] : "Tower " + (index + 1);
     }
 }

@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 7049407092799434534}
-  musicVolume: 0.25
+  musicVolume: 0.323
   sfxSource: {fileID: 1856291909005561117}
   soundVolumes:
   - clip: {fileID: 8300000, guid: d1d35f4e9c3ab2648aa029c5d8c43762, type: 3}
@@ -255,9 +255,9 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 2579ed0cbc27d4640af2d9e8d4d51452, type: 3}
     volume: 0.2
   - clip: {fileID: 8300000, guid: ae9a92e9ce62579438d4eeeecbab263d, type: 3}
-    volume: 0.45
+    volume: 0.4
   - clip: {fileID: 8300000, guid: fee1bb8a0ad2c4f4b957413267eec148, type: 3}
-    volume: 0.45
+    volume: 0.4
   - clip: {fileID: 8300000, guid: 9647488ab3a44ef4c9e696b40113d537, type: 3}
     volume: 0.7
   - clip: {fileID: 8300000, guid: 768dd88e990a62445a736d17759efae1, type: 3}

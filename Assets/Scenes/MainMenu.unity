@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -410}
+  m_AnchoredPosition: {x: 0, y: -439}
   m_SizeDelta: {x: 420, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &31819046
@@ -564,6 +564,7 @@ GameObject:
   - component: {fileID: 378662612}
   - component: {fileID: 378662611}
   - component: {fileID: 378662610}
+  - component: {fileID: 378662613}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -635,7 +636,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 378662611}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 378662613}
+        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &378662611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,6 +687,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378662608}
   m_CullTransparentMesh: 1
+--- !u!114 &378662613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378662608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f015c8974e50d4c48881f71feef6a73d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &378760364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1317,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1732,7 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.98765564, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.98823524, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2912,15 +2937,17 @@ MonoBehaviour:
     point and follow the path to your base. Build towers to stop them before they
     get there. Each enemy that reaches the base takes away health; if it drops to
     zero, the game is over. Clear every wave before the time runs out to win (Easy:
-    2 min, Hard: 2 min 40 s).\n\n<color=#FFE500><b>Controls</b></color>\n<b>1</b>
-    - Ranger (60 gold): long range, slow and heavy shots      <b>2</b> - Ninja (40
-    gold): short range, fast shots\n<b>Left click</b> - place the tower (green =
-    valid spot, red = invalid)      <b>Right click</b> - cancel\n\n<color=#FFE500><b>Score</b></color>\nNormal
+    3 min, Hard: 6 min).\n\n<color=#FFE500><b>Controls</b></color>\n<b>Number1</b>
+    - CannonTower (80 gold): long range, slow and heavy shots      <b>Number2</b>
+    - FlameTower (40 gold): short range, fast shots\n<b>Left click</b> - place the
+    tower (green = valid spot, red = invalid)      <b>Right click</b> - cancel\n\n<color=#FFE500><b>Score</b></color>\nNormal
     enemy: 10 points      Fast enemy: 15 points      Victory: + remaining base health
     + remaining seconds\nTowers cost gold. You start with some gold and earn more
     for each enemy killed and each wave cleared (Hard pays less).\nEasy and Hard
-    have separate rankings.\n\n<size=80%><alpha=#AA>Computa\xE7\xE3o Gr\xE1fica e
-    Realidade Virtual (CCC300) - UPF 2026/2\nTeam: Carlos, Frederico and Lucian</size>"
+    have separate rankings.\n\n<color=#FFE500><b>Tip</b></color>: A tower always
+    tries to hit the enemy closest to the base, so plan your placement accordingly.\n\n<size=80%><alpha=#AA>Computa\xE7\xE3o
+    Gr\xE1fica e Realidade Virtual (CCC300) - UPF 2026/2\nTeam: Carlos, Frederico
+    and Lucian</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5019,7 +5046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 390.11758}
+  m_AnchoredPosition: {x: 0, y: 387}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2099314891
@@ -5042,7 +5069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TOWER DEFENSE
+  m_text: MEDIEVAL DEFENSE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

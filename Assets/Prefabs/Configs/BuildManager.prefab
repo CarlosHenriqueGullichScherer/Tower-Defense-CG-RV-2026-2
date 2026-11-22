@@ -45,12 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildManager
   mainCamera: {fileID: 0}
-  previewPrefab: {fileID: 0}
+  previewPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
   towerPrefabs:
-  - {fileID: 3444484887523545960, guid: cc379e403f0764c19bd4c0518f599d39, type: 3}
-  - {fileID: 4810996979577630041, guid: 29853c1b682c18e49b9fb9f7c7ccd9ca, type: 3}
-  towerCosts: 3c00000028000000
+  - {fileID: 0}
+  - {fileID: 0}
+  towerCosts: 280000003c000000
   towerNames:
-  - CannonTower
   - FireTower
+  - CannonTower
   buildSound: {fileID: 8300000, guid: 9d329354d37af714b9a5f355a4421ae1, type: 3}

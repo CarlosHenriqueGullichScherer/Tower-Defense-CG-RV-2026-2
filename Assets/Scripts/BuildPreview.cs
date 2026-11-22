@@ -8,6 +8,7 @@ public class BuildPreview : MonoBehaviour
 
     [SerializeField] private Color validColor = Color.green;
     [SerializeField] private Color invalidColor = Color.red;
+    [SerializeField] private SpriteRenderer rangeRenderer;
 
     private SpriteRenderer[] renderers;
 
@@ -45,6 +46,9 @@ public class BuildPreview : MonoBehaviour
 
         foreach (SpriteRenderer sprite in renderers)
         {
+            if (sprite == rangeRenderer)
+                continue;
+
             sprite.color = color;
         }
     }

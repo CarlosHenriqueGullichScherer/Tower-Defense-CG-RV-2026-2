@@ -261,10 +261,10 @@ public class GameSession : MonoBehaviour
 
         hudText.text =
             "Base: " + health +
-            "\n<color=#FFD24D>Gold: " + gold + "</color>" +
+            "\n<color=#FF0000>Gold: " + gold + "</color>" +
             "\nWave: " + wave +
-            "\nScore: " + score +
-            "\nKills: " + kills +
+            " Score: " + score +
+            " Kills: " + kills +
             "\n" + TimeLabel();
 
         if (shopText != null && buildManager != null)

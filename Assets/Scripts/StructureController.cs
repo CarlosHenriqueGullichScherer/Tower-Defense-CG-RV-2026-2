@@ -15,20 +15,17 @@ public class StructureController : MonoBehaviour
 
     void Update()
     {
+        FindTarget();
+
         if (target != null)
         {
             turretAim.AimAt(target.transform);
-        }
 
-        if (target == null || Vector2.Distance(transform.position, target.transform.position) > range)
-        {
-            FindTarget();
-        }
-
-        if (target != null && Time.time >= nextAttackTime)
-        {
-            Attack();
-            nextAttackTime = Time.time + attackRate;
+            if (Time.time >= nextAttackTime)
+            {
+                Attack();
+                nextAttackTime = Time.time + attackRate;
+            }
         }
     }
 
@@ -38,18 +35,19 @@ public class StructureController : MonoBehaviour
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, range);
 
+        float furthestProgress = -1f;
+
         foreach (Collider2D enemyCollider in enemies)
         {
             Enemy enemy = enemyCollider.GetComponent<Enemy>();
 
-            if (enemy != null)
+            if (enemy != null && enemy.PathProgress > furthestProgress)
             {
                 target = enemy;
-                break;
+                furthestProgress = enemy.PathProgress;
             }
         }
     }
-
     private void Attack()
     {
         if (target == null) return;

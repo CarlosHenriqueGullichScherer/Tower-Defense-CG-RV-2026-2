@@ -302,7 +302,7 @@ Transform:
   m_GameObject: {fileID: 3444484887523545960}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22977, y: -6.64, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -322,8 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036372c459f42ff4b99b854763a5ee71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StructureController
-  range: 100
-  attackRate: 1
+  range: 18
+  attackRate: 3.5
   projectilePrefab: {fileID: 6544951837395828410, guid: 707263b826d9d172cb225aa90622187d, type: 3}
   firePoint: {fileID: 6302172106521894886}
   turretAim: {fileID: 1357636770214757664}

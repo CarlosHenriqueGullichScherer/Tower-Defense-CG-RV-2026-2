@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fe205d54d6b4e4b8c27fd7a541261e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  speed: 8
-  damage: 2
+  speed: 12
+  damage: 3
   animationSprites:
   - {fileID: -2100312739563866566, guid: 064a6dec667b1414992203f1e388fdf0, type: 3}
   - {fileID: -9001473029515254229, guid: 2176690285ca12c4f97705d5ce16062b, type: 3}
@@ -122,3 +122,5 @@ MonoBehaviour:
   - {fileID: -7547314956129644981, guid: f8851f39029a0cc43bfc57f5d2943dce, type: 3}
   impactFrameDuration: 0.08
   impactSound: {fileID: 8300000, guid: fee1bb8a0ad2c4f4b957413267eec148, type: 3}
+  collisionRadius: 0.15
+  maxDistanceAfterTargetLost: 100

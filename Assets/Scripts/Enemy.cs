@@ -24,6 +24,10 @@ public class Enemy : MonoBehaviour
 
     private Transform[] waypoints;
     private int currentWaypoint = 0;
+    public int CurrentWaypoint
+    {
+        get { return currentWaypoint; }
+    }
 
     private int currentDirection = 2;
     private int currentFrame = 0;
@@ -31,6 +35,32 @@ public class Enemy : MonoBehaviour
 
     private bool dead;
     private bool takingDamage;
+    private Vector2 pathStartPosition;
+
+    public float PathProgress
+    {
+        get
+        {
+            if (waypoints == null || waypoints.Length == 0)
+                return 0f;
+
+            float progress = 0f;
+            Vector2 segmentStart = pathStartPosition;
+
+            for (int i = 0; i < currentWaypoint; i++)
+            {
+                progress += Vector2.Distance(segmentStart, waypoints[i].position);
+                segmentStart = waypoints[i].position;
+            }
+
+            if (currentWaypoint < waypoints.Length)
+            {
+                progress += Vector2.Distance(segmentStart, transform.position);
+            }
+
+            return progress;
+        }
+    }
 
     private Coroutine damageCoroutine;
 
@@ -48,6 +78,7 @@ public class Enemy : MonoBehaviour
     public void SetWayPoints(Transform[] newWaypoints)
     {
         waypoints = newWaypoints;
+        pathStartPosition = transform.position;
     }
 
     void Update()

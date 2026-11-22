@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 4
-  health: 5
+  health: 9
   points: 15
-  gold: 8
+  gold: 5
   walkSprites:
   - {fileID: 9037564370553328222, guid: 1dc612ff3147d6a489c26cd09e1ae90c, type: 3}
   - {fileID: 7156904325228195273, guid: 57386621122717d498612ea2b4eb8cbc, type: 3}

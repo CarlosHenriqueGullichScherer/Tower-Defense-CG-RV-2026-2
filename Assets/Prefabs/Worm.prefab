@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80906ac89719f4a40808cc506691e657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  speed: 4
-  health: 5
+  speed: 7
+  health: 7
   points: 15
-  gold: 8
+  gold: 6
   walkSprites:
   - {fileID: 9037564370553328222, guid: 8211361f8ffde2a48ad0a5ba9c8c5484, type: 3}
   - {fileID: 7156904325228195273, guid: 7eacca11d7f8b70479f1182788adb969, type: 3}
