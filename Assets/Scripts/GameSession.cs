@@ -38,6 +38,9 @@ public class GameSession : MonoBehaviour
     private TMP_Text endDetails;
     private TMP_InputField nameInput;
     private Button saveButton;
+    private GameSpeedController gameSpeedController;
+    private Button normalSpeedButton;
+    private Button doubleSpeedButton;
 
     public bool Finished => finished;
     public int Score => score;
@@ -286,6 +289,16 @@ public class GameSession : MonoBehaviour
         int total = Mathf.FloorToInt(seconds);
         return (total / 60).ToString("00") + ":" + (total % 60).ToString("00");
     }
+    private void SetGameSpeed(float speed)
+    {
+        if (speed == 1f)
+            gameSpeedController.SetNormalSpeed();
+        else
+            gameSpeedController.SetDoubleSpeed();
+
+        normalSpeedButton.interactable = speed != 1f;
+        doubleSpeedButton.interactable = speed != 2f;
+    }
 
     private void BuildUI()
     {
@@ -302,6 +315,16 @@ public class GameSession : MonoBehaviour
         scaler.matchWidthOrHeight = 0.5f;
 
         Transform root = canvasObject.transform;
+
+        gameSpeedController = gameObject.AddComponent<GameSpeedController>();
+
+        normalSpeedButton = CreateButton(root, "1x", () => SetGameSpeed(1f));
+        Place((RectTransform)normalSpeedButton.transform, new Vector2(1f, 1f), new Vector2(-150f, -40f), new Vector2(120f, 70f));
+
+        doubleSpeedButton = CreateButton(root, "2x", () => SetGameSpeed(2f));
+        Place((RectTransform)doubleSpeedButton.transform, new Vector2(1f, 1f), new Vector2(-30f, -40f), new Vector2(120f, 70f));
+
+        SetGameSpeed(1f);
 
         hudText = CreateText(root, "HUD", 32, TextAlignmentOptions.TopLeft);
         hudText.outlineWidth = 0.2f;

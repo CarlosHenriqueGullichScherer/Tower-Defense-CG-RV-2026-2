@@ -10,7 +10,7 @@ Projeto de um jogo **Tower Defense 2D**, desenvolvido para a disciplina de Compu
 
 ## Demonstração do jogo
 
-[Assista à demonstração do Tower Defense](https://www.youtube.com/watch?v=jVwMau04mxk)
+[Assista à demonstração do Tower Defense](https://www.youtube.com/watch?v=6Ms0LBvPfFs)
 
 ## Download
 
