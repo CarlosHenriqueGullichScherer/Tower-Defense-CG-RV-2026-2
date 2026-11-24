@@ -8,6 +8,14 @@ Projeto de um jogo **Tower Defense 2D**, desenvolvido para a disciplina de Compu
 - **Plataforma:** PC
 - **Modelo inicial:** Universal 2D (URP)
 
+## Demonstração do jogo
+
+[Assista à demonstração do Tower Defense](https://www.youtube.com/watch?v=jVwMau04mxk)
+
+## Download
+
+[Baixar Tower Defense v1.0](https://github.com/CarlosHenriqueGullichScherer/Tower-Defense-CG-RV-2026-2/releases/tag/GameBuild)
+
 ## 2. Estruturas defensivas
 
 - [x] Implementar no mínimo duas estruturas defensivas distintas.
@@ -87,8 +95,8 @@ Requisito temporal:
 
 ## 10. Entregáveis
 
-- [ ] Disponibilizar um link para baixar o executável do jogo.
-- [ ] Disponibilizar um link para um vídeo de demonstração da solução.
+- [x] Disponibilizar um link para baixar o executável do jogo.
+- [x] Disponibilizar um link para um vídeo de demonstração da solução.
 
 ## 11. Critérios de avaliação
 
